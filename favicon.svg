@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Thee Baby's Name Generator</title>
+  <desc id="desc">A baby-themed icon with a heart and the letters T and B.</desc>
+  <rect width="64" height="64" rx="18" fill="#E9F1EC"/>
+  <rect x="7" y="7" width="50" height="50" rx="15" fill="#1C3A33"/>
+  <path d="M32 18c-3-5-11-6-15-1-4 5-3 12 3 18l12 10 12-10c6-6 7-13 3-18-4-5-12-4-15 1z" fill="#F0B429"/>
+  <path d="M23 28h18v4H23zm-1 8h20v4H22zm8-20h4v22h-4z" fill="#FFFFFF"/>
+  <path d="M32 22v18M19 32h26" stroke="#FFFFFF" stroke-width="2.5" opacity="0.9" stroke-linecap="round"/>
+</svg>

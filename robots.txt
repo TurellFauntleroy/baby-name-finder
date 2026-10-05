@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://turellfauntleroy.github.io/baby-name-finder/sitemap.xml

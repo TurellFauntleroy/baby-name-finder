@@ -1,0 +1,17 @@
+{
+  "name": "Thee Baby's Name Generator",
+  "short_name": "Baby Name Generator",
+  "description": "Find a baby name idea based on both parents, heritage, values, and style.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#E9F1EC",
+  "theme_color": "#1C3A33",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
