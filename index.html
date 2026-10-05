@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thee Baby's Name Generator: Get a Name Idea Based on Both Parents</title>
+<meta name="description" content="Free baby name generator that blends both parents' names, heritage, values and style to suggest a name with its meaning. Boy, girl and gender-neutral options.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Thee Baby's Name Generator: a name idea based on both parents">
+<meta property="og:description" content="Enter both parents' names, heritage and values to get a baby name suggestion with its meaning.">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Thee Baby's Name Generator","applicationCategory":"LifestyleApplication","operatingSystem":"Any","description":"Baby name generator that suggests names based on both parents' names, heritage, values and style.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Figtree:wght@400;600&display=swap">
+<style>
+:root{--bg:#E9F1EC;--ink:#1C3A33;--mute:#5A736B;--card:#FFFFFF;--line:#C9D9D1;--sun:#F0B429;--coral:#E4745F;--onsun:#1C3A33;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14231F;--ink:#E6F0EB;--mute:#9DB5AC;--card:#1D312B;--line:#2F4A42}}
+:root[data-theme="dark"]{--bg:#14231F;--ink:#E6F0EB;--mute:#9DB5AC;--card:#1D312B;--line:#2F4A42}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Figtree,system-ui,sans-serif}
+main{max-width:640px;margin:0 auto;padding:20px 16px 48px}
+h1{font:700 clamp(30px,8vw,44px)/1.1 Fraunces,Georgia,serif;margin:8px 0 6px}
+.lead{color:var(--mute);margin:0 0 20px;max-width:46ch}
+.tag{background:var(--card);border-radius:20px;overflow:hidden;border:1px solid var(--line);margin-bottom:20px}
+.tag .bar{background:var(--coral);color:#fff;text-align:center;padding:8px;font-weight:600;font-size:14px}
+.tag .body{padding:22px 18px 24px;text-align:center}
+.big{font:700 clamp(44px,14vw,76px)/1 Fraunces,Georgia,serif;margin:4px 0 8px;overflow-wrap:anywhere}
+.big.ph{color:var(--mute);font-size:clamp(24px,7vw,34px);font-weight:500}
+.mean{font:500 18px/1.4 Fraunces,Georgia,serif;margin:0 0 14px}
+.why{list-style:none;padding:0;margin:0 auto;max-width:44ch;text-align:left;color:var(--mute)}
+.why li{padding:6px 0 6px 18px;position:relative}
+.why li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:8px;border-radius:50%;background:var(--sun)}
+.full{margin-top:12px;font-weight:600}
+fieldset{border:1px solid var(--line);border-radius:14px;padding:14px;margin:0 0 14px;background:var(--card)}
+legend{font:700 18px Fraunces,Georgia,serif;padding:0 6px}
+label{display:block;font-weight:600;font-size:14px;margin:10px 0 4px}
+input,select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.chip{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--sun);color:var(--onsun);border-color:var(--sun);font-weight:600}
+:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:480px){.row{grid-template-columns:1fr}}
+.go{width:100%;font:600 17px Figtree,sans-serif;background:var(--ink);color:var(--bg);border:0;border-radius:12px;padding:14px;cursor:pointer;margin-top:6px}
+.err{color:var(--coral);min-height:22px;margin:8px 0 0;font-weight:600}
+h2{font:700 22px Fraunces,Georgia,serif;margin:24px 0 8px}
+.prof{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:0}
+.alt{display:flex;flex-direction:column;gap:8px}
+.alt button{text-align:left;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;cursor:pointer}
+.alt b{font:700 20px Fraunces,Georgia,serif;display:block}
+.alt span{color:var(--mute);font-size:14px}
+.foot{color:var(--mute);font-size:13px;margin-top:24px}
+</style>
+</head>
+<body>
+<main>
+<h1>Thee Baby's Name Generator</h1>
+<p class="lead">Tell us about both parents. We weigh your names, values and heritage to suggest a name for your baby.</p>
+
+<section class="tag" aria-live="polite">
+<div class="bar">Hello, my name is</div>
+<div class="body" id="result"><div class="big ph">Your baby's name will appear here</div></div>
+</section>
+
+<div id="form"></div>
+
+<fieldset>
+<legend>The baby</legend>
+<div class="row">
+<div><label for="gender">Name type</label>
+<select id="gender"><option value="any">Surprise me</option><option value="f">Girl</option><option value="m">Boy</option><option value="n">Gender-neutral</option></select></div>
+<div><label for="style">Style</label>
+<select id="style"><option value="any">No preference</option><option value="classic">Classic</option><option value="modern">Modern</option><option value="unique">Unique</option><option value="gentle">Gentle</option></select></div>
+</div>
+<label for="sur">Family surname (optional)</label>
+<input id="sur" autocomplete="family-name" placeholder="e.g. Rivera">
+</fieldset>
+
+<button class="go" id="go">Find a name</button>
+<p class="err" id="err" role="alert"></p>
+<div id="more"></div>
+<!-- AD SLOT: paste your ad network's code here once the page is on your own domain -->
+<div id="ad-slot"></div>
+<h2>How the baby name finder works</h2>
+<p class="prof">This free baby name generator looks at both parents' first names, cultural heritage and personal values, then picks names that fit all of them. Choose a girl, boy or gender-neutral name, pick a style such as classic, modern, unique or gentle, and add your surname to see the full name. Each suggestion comes with its meaning and the reasons it was chosen.</p>
+<p class="foot">Just for fun: a name suggestion, not a prediction. The final call is yours.</p>
+</main>
+
+<script>
+var VALS={nature:"Nature",music:"Music",courage:"Courage",faith:"Faith",learning:"Learning",humor:"Humor",family:"Family",adventure:"Adventure"};
+var HER={any:"No preference",english:"English",irish:"Irish",latin:"Spanish / Italian",french:"French",hebrew:"Hebrew",arabic:"Arabic",indian:"Indian",japanese:"Japanese",african:"African",nordic:"Nordic"};
+// name, type, heritage, style, values, meaning
+var N=[
+["Willow","f","english","gentle","nature","Willow tree: grace and flexibility"],
+["Hazel","f","english","classic","nature,learning","The hazel tree, a symbol of wisdom"],
+["Eleanor","f","english","classic","family,courage","Shining light"],
+["Maeve","f","irish","modern","courage","She who intoxicates; a legendary warrior queen"],
+["Aoife","f","irish","unique","courage,family","Beauty and radiance"],
+["Luna","f","latin","modern","nature,adventure","Moon"],
+["Sofia","f","latin","classic","learning","Wisdom"],
+["Chiara","f","latin","classic","faith,learning","Clear and bright"],
+["Celeste","f","french","gentle","faith,nature","Heavenly"],
+["Camille","f","french","classic","faith,music","Free-born; attendant at a ceremony"],
+["Naomi","f","hebrew","gentle","family,faith","Pleasantness"],
+["Eliana","f","hebrew","modern","faith,music","My God has answered"],
+["Talia","f","hebrew","modern","nature,faith","Dew from heaven"],
+["Amira","f","arabic","modern","courage,family","Princess; leader"],
+["Layla","f","arabic","classic","music","Night"],
+["Anaya","f","indian","modern","family,faith","Caring; of God's care"],
+["Asha","f","indian","gentle","faith,family","Hope"],
+["Hana","f","japanese","gentle","nature","Flower"],
+["Aiko","f","japanese","unique","family","Beloved child"],
+["Amara","f","african","modern","faith,family","Grace"],
+["Zuri","f","african","unique","nature,humor","Beautiful"],
+["Freya","f","nordic","modern","courage,adventure","Noble lady; a Norse goddess of love"],
+["Astrid","f","nordic","classic","courage","Divinely beautiful"],
+["Henry","m","english","classic","family","Ruler of the home"],
+["Theodore","m","english","classic","faith,learning","Gift of God"],
+["Jasper","m","english","unique","adventure,learning","Keeper of treasure"],
+["Finn","m","irish","modern","adventure,humor","Fair"],
+["Declan","m","irish","modern","faith,family","Full of goodness"],
+["Mateo","m","latin","modern","faith","Gift of God"],
+["Leo","m","latin","classic","courage","Lion"],
+["Luca","m","latin","modern","learning,music","Bringer of light"],
+["Lucien","m","french","classic","learning","Light"],
+["Remy","m","french","unique","adventure,music","Oarsman"],
+["Elias","m","hebrew","classic","faith","My God is Yahweh"],
+["Noam","m","hebrew","unique","humor,music","Pleasantness"],
+["Eli","m","hebrew","modern","faith,humor","Elevated; uplifted"],
+["Idris","m","arabic","unique","learning,faith","Studious"],
+["Omar","m","arabic","classic","family,courage","Flourishing; long-lived"],
+["Arjun","m","indian","classic","courage","Bright and shining; a hero of the Mahabharata"],
+["Kofi","m","african","classic","family,humor","Born on Friday"],
+["Jabari","m","african","unique","courage","Brave"],
+["Leif","m","nordic","unique","adventure","Heir; beloved"],
+["Anders","m","nordic","classic","courage","Manly; brave"],
+["River","n","english","modern","nature,adventure","Flowing water"],
+["Sage","n","english","modern","learning,nature","Wise"],
+["Rowan","n","irish","modern","nature","Little red one; the rowan tree"],
+["Kiran","n","indian","modern","nature,faith","Ray of light"],
+["Haru","n","japanese","unique","nature","Spring; clear skies"],
+["Ren","n","japanese","modern","nature,music","Lotus; love"],
+["Eden","n","hebrew","gentle","nature,faith","Delight"],
+["Noa","n","hebrew","gentle","family,music","Movement; comfort"]
+].map(function(a){return{n:a[0],g:a[1],h:a[2],s:a[3],v:a[4].split(","),m:a[5]}});
+
+var P=[{vals:{}},{vals:{}}], shuffles=0;
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function list(a){return a.length<2?a.join(""):a.slice(0,-1).join(", ")+" and "+a[a.length-1]}
+function letters(s){var o={};s.toLowerCase().replace(/[^a-z]/g,"").split("").forEach(function(c){o[c]=1});return o}
+
+function build(){
+ var f=document.getElementById("form");
+ [0,1].forEach(function(i){
+  var fs=document.createElement("fieldset");
+  fs.innerHTML='<legend>Parent '+(i+1)+'</legend><label for="pn'+i+'">First name</label><input id="pn'+i+'" autocomplete="off" placeholder="'+(i?"e.g. Sam":"e.g. Alex")+'"><label for="ph'+i+'">Heritage</label><select id="ph'+i+'">'+Object.keys(HER).map(function(k){return'<option value="'+k+'">'+HER[k]+'</option>'}).join("")+'</select><label id="vl'+i+'">What matters most to you</label><div class="chips" role="group" aria-labelledby="vl'+i+'"></div>';
+  var c=fs.querySelector(".chips");
+  Object.keys(VALS).forEach(function(k){
+   var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=VALS[k];b.setAttribute("aria-pressed","false");
+   b.onclick=function(){P[i].vals[k]=!P[i].vals[k];b.setAttribute("aria-pressed",P[i].vals[k]?"true":"false")};
+   c.appendChild(b)});
+  f.appendChild(fs)});
+}
+
+function analyze(){
+ var err=document.getElementById("err");
+ var na=document.getElementById("pn0").value.trim(), nb=document.getElementById("pn1").value.trim();
+ if(!na||!nb){err.textContent="Add both parents' first names to continue.";return}
+ err.textContent="";
+ var names=[na,nb], her=[document.getElementById("ph0").value,document.getElementById("ph1").value];
+ var g=document.getElementById("gender").value, st=document.getElementById("style").value, sur=document.getElementById("sur").value.trim();
+ var count={};[0,1].forEach(function(i){Object.keys(P[i].vals).forEach(function(k){if(P[i].vals[k])count[k]=(count[k]||0)+1})});
+ var la=letters(na), lb=letters(nb), jit=shuffles?1.6:0.25;
+ var pool=N.filter(function(x){return g==="any"||x.g===g||(x.g==="n"&&g!=="any")});
+ var scored=pool.map(function(x){
+  var s=0,why=[];
+  var hp=[0,1].filter(function(i){return her[i]!=="any"&&her[i]===x.h});
+  if(hp.length){s+=hp.length===2?6:4;why.push(hp.length===2?"Rooted in "+HER[x.h]+" heritage, which you both share":"Reflects "+names[hp[0]]+"'s "+HER[x.h]+" heritage")}
+  var mv=x.v.filter(function(v){return count[v]});
+  mv.forEach(function(v){s+=count[v]===2?3:2});
+  if(mv.length){var both=mv.filter(function(v){return count[v]===2}).map(function(v){return VALS[v].toLowerCase()});
+   var one=mv.filter(function(v){return count[v]===1}).map(function(v){return VALS[v].toLowerCase()});
+   if(both.length)why.push("Speaks to what you both value: "+list(both));
+   if(one.length)why.push("Echoes one parent's love of "+list(one))}
+  if(st!=="any"&&x.s===st){s+=3;why.push("Matches the "+st+" style you chose")}
+  var u=Object.keys(letters(x.n)),sh=u.filter(function(c){return la[c]&&lb[c]}).length/u.length;
+  s+=sh*2;if(sh>=0.6)why.push("Shares sounds with both of your names");
+  var ini=x.n[0].toLowerCase();
+  if(ini===na[0].toLowerCase()||ini===nb[0].toLowerCase()){s+=1.5;why.push("Starts with the same letter as "+(ini===na[0].toLowerCase()?na:nb))}
+  if(sur&&x.n.slice(-1).toLowerCase()===sur[0].toLowerCase()){s-=1;}
+  return{x:x,s:s+Math.random()*jit,why:why}
+ }).sort(function(a,b){return b.s-a.s});
+ render(scored,names,count,sur);shuffles++;
+}
+
+function show(r,sur){
+ var x=r.x, full=sur?x.n+" "+sur:"";
+ var flow=sur&&x.n.slice(-1).toLowerCase()===sur[0].toLowerCase()?" (the last and first letters meet, so say it aloud to check the flow)":"";
+ document.getElementById("result").innerHTML='<div class="big">'+esc(x.n)+'</div><p class="mean">'+esc(x.m)+'</p><ul class="why">'+(r.why.length?r.why:["A well-rounded fit for the style you picked"]).map(function(w){return"<li>"+esc(w)+"</li>"}).join("")+'</ul>'+(full?'<div class="full">'+esc(full)+esc(flow)+'</div>':"");
+}
+
+function render(sc,names,count,sur){
+ show(sc[0],sur);
+ var shared=Object.keys(count).filter(function(k){return count[k]===2}).map(function(k){return VALS[k].toLowerCase()});
+ var all=Object.keys(count).map(function(k){return VALS[k].toLowerCase()});
+ var prof=shared.length?esc(names[0])+" and "+esc(names[1])+" both prioritise "+list(shared)+".":all.length?"Between "+esc(names[0])+" and "+esc(names[1])+", the values that came through are "+list(all)+".":"No values picked, so suggestions lean on your names, heritage and style.";
+ var m=document.getElementById("more");
+ m.innerHTML='<h2>What we found in you two</h2><p class="prof">'+prof+'</p><h2>Other names to try</h2><div class="alt"></div>';
+ var a=m.querySelector(".alt");
+ sc.slice(1,6).forEach(function(r){var b=document.createElement("button");b.type="button";b.innerHTML="<b>"+esc(r.x.n)+"</b><span>"+esc(r.x.m)+"</span>";b.onclick=function(){show(r,sur);window.scrollTo({top:0,behavior:"smooth"})};a.appendChild(b)});
+ document.getElementById("go").textContent="Shuffle suggestions";
+ document.getElementById("result").scrollIntoView({behavior:"smooth",block:"center"});
+}
+build();document.getElementById("go").onclick=analyze;
+</script>
+</body>
+</html>
